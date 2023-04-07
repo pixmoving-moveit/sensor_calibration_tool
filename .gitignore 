@@ -3,5 +3,6 @@ build/
 
 **/*.tar.gz
 *.tar.gz
+docker_copy.tar.gz
 
 **/.DS_Store
