@@ -1,6 +1,6 @@
 #!/bin/bash
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
-source $SCRIPT_DIR/script/log.sh
+source $SCRIPT_DIR/docker_script/log.sh
 
 FUNCTION=""
 function lower() {
@@ -41,12 +41,12 @@ function parse_arguments() {
   case "$FUNCTION" in
     build)
     log_info "docker build"
-    $SCRIPT_DIR/script/docker_build.sh
+    $SCRIPT_DIR/docker_script/docker_build.sh
     ;;
 
     exec)
     log_info "docker exec"
-    $SCRIPT_DIR/script/docker_exec.sh
+    $SCRIPT_DIR/docker_script/docker_exec.sh
     ;;
   esac
 
