@@ -1,0 +1,10 @@
+   <launch>
+      <node pkg="rosbag" type="play" name="rosbag" required="true" args="$(env bag2png_path_env)"/>
+
+      <node name="extract" pkg="image_view" type="extract_images" respawn="false" required="true" output="screen" cwd="ROS_HOME">
+         <remap from="image" to="$(env bag2png_topic_env)"/>
+	      <param name="encoding" value="bgr8" />
+
+	      <param name="filename_format" value="$(env output_folder_env)" />
+      </node>
+   </launch>

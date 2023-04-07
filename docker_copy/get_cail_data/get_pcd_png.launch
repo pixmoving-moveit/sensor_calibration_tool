@@ -1,0 +1,31 @@
+<launch>
+<!-- start ros driver -->
+  <include file="$(find rslidar_sdk)/launch/start.launch" />
+ 
+  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" required="true">
+    <param name="video_device" value="/dev/video0" />
+    <param name="image_width" value="1920" />
+    <param name="image_height" value="1080" />
+    <param name="pixel_format" value="uyvy" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+
+<!-- get pcd png -->
+  <!-- output png -->
+  <node name="extract" pkg="image_view" type="extract_images" respawn="false" required="true" output="screen"
+  if="$(eval rostopic list -b $ROS_HOME/rosout.log | grep $png_topic_name_env)">
+    <remap from="image" to="$(env png_topic_name_env)"/>
+    <param name="filename_format" value="$(env png_file_path_env)" />
+    <param name="encoding" value="bgr8" />
+  </node>
+
+  <!-- output pcd  -->
+  <node pkg="pcl_ros" type="pointcloud_to_pcd" name="pointcloud_to_pcd_node" output="screen"
+  if="$(eval rostopic list -b $ROS_HOME/rosout.log | grep $pcd_topic_name_env)">
+    <remap from="input" to="$(env pcd_topic_name_env) " />
+    <param name="filename" value="$(env pcd_file_path_env)" />
+    <!-- <param name="frame_id" value="camera_link" /> -->
+  </node>
+  
+</launch>

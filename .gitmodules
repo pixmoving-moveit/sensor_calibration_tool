@@ -1,0 +1,3 @@
+[submodule "SensorsCalibration"]
+	path = SensorsCalibration
+	url = https://github.com/PJLab-ADG/SensorsCalibration.git

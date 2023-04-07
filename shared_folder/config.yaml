@@ -1,0 +1,7 @@
+get_cail_data:
+  png_topic_name: /usb_cam/image_raw
+  pcd_topic_name: /rslidar_points 
+docker_config:
+  docker_container_name: sensor_calibration_1
+  docker_image_name: sensor_calibration_tool
+  docker_image_version: latest
