@@ -1,0 +1,10 @@
+<launch>
+    <arg name="topic_name" default="$(env pcd_topic_name_env)" />
+<!-- output pcd  -->
+    <node pkg="pcl_ros" type="pointcloud_to_pcd" name="pointcloud_to_pcd_node" output="screen" 
+    if="$(eval 'rostopic list -b $ROS_HOME/rosout.log | grep $(arg topic_name)')">
+        <remap from="input" to="$(env pcd_topic_name_env)" />
+        <param name="filename" value="$(env pcd_file_path_env)" />
+        <!-- <param name="frame_id" value="camera_link" /> -->
+    </node>
+</launch>

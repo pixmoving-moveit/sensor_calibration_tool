@@ -28,6 +28,79 @@ function error() {
   echo "$1" >&2
 }
 
+
+function is_yq_install(){
+  YQ_VERSION="v4.16.2"
+  YQ_BINARY="yq_linux_amd64"
+  wget -L https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY} -O $SCRIPT_DIR/docker_copy/yq
+  chmod +x $SCRIPT_DIR/docker_copy/yq
+  
+  if ! which yq > /dev/null; then
+    read -p "yq command not found. Do you want to install it? (Y/n) " choice
+    case "$choice" in
+      y|Y )
+        # 自动安装 yq 命令
+        sudo cp $SCRIPT_DIR/docker_copy/yq /usr/bin/yq
+        ;;
+      * )
+        log_warning "Please install yq command manually."
+        exit 1
+        ;;
+    esac
+  fi
+
+}
+
+function docker_install(){
+
+  # 卸载旧版本 Docker
+  sudo apt-get remove docker docker-engine docker.io containerd runc
+
+  # 安装依赖包
+  sudo apt-get update
+  sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
+
+  # 添加 Docker 官方 GPG 密钥
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+  # 添加 Docker 官方 APT 源
+  echo \
+    "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+  # 安装 Docker Engine
+  sudo apt-get update
+  sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+  # 启动 Docker 服务
+  sudo systemctl start docker
+
+  # 添加当前用户到 Docker 用户组，以避免使用 sudo 来执行 Docker 命令
+  sudo usermod -aG docker $USER
+
+  # 重新登录以使用户组更改生效
+  log_info "Please logout and login again to use Docker without sudo."
+
+}
+
+is_docker_install(){
+  #!/bin/bash
+
+  if ! which docker > /dev/null; then
+    read -p "Docker command not found. Do you want to install it? (Y/n) " choice
+    case "$choice" in
+      y|Y )
+        # 自动安装 Docker
+        docker_install
+        ;;
+      * )
+        log_warning "Please install Docker manually."
+        exit 1
+        ;;
+    esac
+  fi
+}
+
 function parse_arguments() {
   FUNCTION=$1
   shift 1
@@ -76,6 +149,9 @@ function main(){
     print_help
     exit 0
   fi
+
+  is_yq_install
+  is_docker_install
 
   parse_arguments $@
 

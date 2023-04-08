@@ -68,6 +68,28 @@ function is_rm_container(){
   esac
 }
 
+function is_rm_container(){
+  read -p "Do you want to remove [$docker_container_name] container? (Y/n) " choice
+
+  case "$choice" in
+    y|Y )
+      log_info "Removing container [$docker_container_name]"
+
+      if docker ps --format '{{.Names}} {{.State}}' | grep -q "${docker_container_name} running"; then
+        docker stop ${docker_container_name}
+      fi
+
+      docker rm $docker_container_name
+      ;;
+    n|N )
+      ;;
+    * )
+      log_error "Invalid input. Please enter Y or N."
+      ;;
+  esac
+}
+
+
 function main(){
     if docker images | grep -q "${docker_image_name}"; then
         log_info "docker image exists [${docker_image_name}]"
@@ -78,6 +100,8 @@ function main(){
 
     if docker ps -a | grep -q "${docker_container_name}"; then
         log_warning "docker container exists [$docker_container_name]"
+        is_rm_container
+        install_container
     else
         install_container
     fi

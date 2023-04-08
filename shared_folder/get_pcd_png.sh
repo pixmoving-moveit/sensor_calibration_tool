@@ -15,19 +15,19 @@ function creat_folder(){
 
     timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
 
-    pcd_path="/root/shared_folder/$timestamp/pcd"
-    mkdir -p pcd_path
+    pcd_path="/root/shared_folder/pix_data/$timestamp/pcd"
+    mkdir -p $pcd_path
     export pcd_file_path_env=pcd_path
 
-    png_path="/root/shared_folder/$timestamp/png"
-    mkdir -p png_path
+    png_path="/root/shared_folder/pix_data/$timestamp/png"
+    mkdir -p $png_path
     export png_file_path_env=png_path
 }
 
 function run_roslaunch(){
     log_info "get [pcd, png] file"
-
-    roslaunch /root/get_cail_data/get_pcd_png.launch
+    source /root/sensor_driver_ws/devel/setup.bash 
+    roslaunch /root/shared_folder/get_cail_data/get_pcd_png.launch
 }
 
 function main(){

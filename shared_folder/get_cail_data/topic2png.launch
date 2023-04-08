@@ -1,0 +1,11 @@
+<launch>
+    <arg name="topic_name" default="$(env png_topic_name_env)" />
+
+<!-- output png -->
+    <node name="extract" pkg="image_view" type="extract_images" respawn="false" required="true" output="screen" 
+    if="$(eval 'rostopic list -b $ROS_HOME/rosout.log | grep $(arg topic_name)')">
+        <remap from="image" to="$(env png_topic_name_env)"/>
+        <param name="filename_format" value="$(env png_file_path_env)" />
+        <param name="encoding" value="bgr8" />
+    </node>
+</launch>
