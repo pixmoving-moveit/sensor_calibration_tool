@@ -45,8 +45,9 @@ function rename_pcd(){
 function main(){
     creat_folder
     run_roslaunch
+    
     rename_pcd
-    # log_info "$pcd_file_path_env"
+    chmod 777 -R /root/shared_folder/pix_data
 }
 main
 
