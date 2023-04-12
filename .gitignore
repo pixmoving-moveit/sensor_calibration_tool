@@ -1,6 +1,12 @@
 build/
 **/build/
 
+install/
+**/install/
+
+log/
+**/log/
+
 pix_data/
 
 **/*.tar.gz
@@ -8,3 +14,6 @@ pix_data/
 
 **/.DS_Store
 yq
+
+__pycache__/
+**/__pycache__/

@@ -49,29 +49,24 @@ def generate_launch_description():
 
     args, unknown = parser.parse_known_args(sys.argv[4:])
 
-    usb_cam_dir = get_package_share_directory('usb_cam')
+
+    current_file_path = os.path.abspath(__file__)
+    usb_cam_dir = os.path.dirname(current_file_path)
 
     # get path to params file
     params_path = os.path.join(
         usb_cam_dir,
-        'config',
-        'params.yaml'
+        'usb_cam_params.yaml'
     )
 
     node_name = args.node_name
-
-    print(params_path)
     ld.add_action(Node(
-        package='usb_cam', executable='usb_cam_node_exe', output='screen',
+        package='usb_cam',
+        executable='usb_cam_node_exe', 
+        output='screen',
         name=node_name,
         # namespace=ns,
         parameters=[params_path]
-        ))
-    ld.add_action(Node(
-        package='usb_cam', executable='show_image.py', output='screen',
-        # namespace=ns,
-        # arguments=[image_manip_dir + "/data/mosaic.jpg"])
-        # remappings=[('image_in', 'image_raw')]
         ))
 
     return ld

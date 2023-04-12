@@ -1,6 +1,5 @@
 <launch>
-
-  <include file="$(find rslidar_sdk)/launch/start.launch" />
+  <include file="/root/shared_folder/get_cail_data/rs16.launch" />
   <include file="/root/shared_folder/get_cail_data/topic2pcd.launch" />
 
   <include file="/root/shared_folder/get_cail_data/usb_cam.launch" />

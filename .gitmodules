@@ -1,3 +1,10 @@
 [submodule "SensorsCalibration"]
 	path = SensorsCalibration
 	url = https://github.com/pixmoving-moveit/SensorsCalibration.git
+[submodule "calibration_script/camera_intrinsic/workspace/src/image_pipeline"]
+	path = calibration_script/camera_intrinsic/workspace/src/image_pipeline
+	url = https://github.com/ros-perception/image_pipeline.git
+	branch = humble
+[submodule "calibration_script/lidar2lidar/calibration_tools"]
+	path = calibration_script/lidar2lidar/calibration_tools
+	url = https://github.com/autocore-ai/calibration_tools.git

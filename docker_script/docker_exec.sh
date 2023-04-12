@@ -13,6 +13,7 @@ function install_container(){
     log_info "create container:$docker_container_name"
 
     volume_1="-v $SCRIPT_DIR/../shared_folder:/root/shared_folder -w /root/shared_folder"
+    # volume_2="--user $(id -u):$(id -g)"
     volume_2=""
     # volume_2='-e DISPLAY=:0 -e LIBGL_DEBUG=verbose -e LIBGL_ALWAYS_SOFTWARE=1 -v /tmp/.X11-unix:/tmp/.X11-unix'
     base='--privileged --network host --device /dev/ttyUSB0'

@@ -4,20 +4,9 @@
       framerate: 30.0
       io_method: "mmap"
       frame_id: "camera"
-      pixel_format: "yuyv"
-      color_format: "yuv420"
-      image_width: 1920
+      pixel_format: "uyvy"
+      color_format: "yuv422p"
+      image_width: 1920 
       image_height: 1080
-      camera_name: "test_camera"
-      camera_info_url: "package://usb_cam/config/camera_info.yaml"
-      brightness: -1
-      contrast: -1
-      saturation: -1
-      sharpness: -1
-      gain: -1
-      auto_white_balance: true
-      white_balance: 4000
-      autoexposure: true
-      exposure: 100
-      autofocus: false
-      focus: -1
+      camera_name: "trafficlight"
+      camera_info_url: "package://pixkit_sensor_kit_launch/data/camera_info.yaml"

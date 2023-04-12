@@ -1,0 +1,5 @@
+
+pcd_path: shared_folder/examples/2023-04-11_07-26-38/pcd/01.pcd
+png_path: shared_folder/examples/2023-04-11_07-26-38/png/01.png
+camera_intrinsic: shared_folder/examples/center_camera-intrinsic.json
+lidar2camera_extrinsic: shared_folder/examples/top_center_lidar-to-center_camera-extrinsic.json

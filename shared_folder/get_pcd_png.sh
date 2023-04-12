@@ -17,7 +17,6 @@ function creat_folder(){
     log_info "create calibration save data folder"
 
     timestamp=$(date "+%Y-%m-%d_%H-%M-%S")
-    index=$(date "%M%S")
 
     png_path="/root/shared_folder/pix_data/$timestamp/png"
     mkdir -p $png_path
@@ -47,8 +46,12 @@ function main(){
     run_roslaunch
     
     rename_pcd
-    chmod 777 -R /root/shared_folder/pix_data
+
+    file_path=/root/shared_folder/get_pcd_png.sh
+    ids=$(ls -n "$file_path" | awk '{print $3, $4}')
+    read user_id group_id <<< "$ids"
+    
+    log_info "$SCRIPT_DIR"
+    chown -R <$user_id>:<$group_id> $SCRIPT_DIR
 }
 main
-
-
