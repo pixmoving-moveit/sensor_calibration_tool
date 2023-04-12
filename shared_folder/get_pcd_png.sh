@@ -36,22 +36,35 @@ function rename_pcd(){
     i=0
     for file in $pcd_path/*
     do
-    mv "$file" "$(printf $pcd_path/'%02d.pcd' $i)"
-    i=$((i+1))
+        mv "$file" "$(printf $pcd_path/'%02d.pcd' $i)"
+        i=$((i+1))
     done
 }
+
+function create_latest_symlink() {
+    if [[ -d "$1" ]]; then
+        cd "$1" || { log_error "Failed to enter directory: $1"; return 1; }
+
+        latest_dir=$(ls -dt */ 2>/dev/null | head -n1)
+        if [[ -n "$latest_dir" ]]; then
+            ln -sfn "$latest_dir" latest
+            log_info "$latest_dir/latest"
+        else
+            log_error "No directories found in $1"
+            return 1
+        fi
+    else
+        log_error "Directory not found: $1"
+        return 1
+    fi
+}
+
 
 function main(){
     creat_folder
     run_roslaunch
     
-    rename_pcd
-
-    file_path=/root/shared_folder/get_pcd_png.sh
-    ids=$(ls -n "$file_path" | awk '{print $3, $4}')
-    read user_id group_id <<< "$ids"
-    
-    log_info "$SCRIPT_DIR"
-    chown -R <$user_id>:<$group_id> $SCRIPT_DIR
+    rename_pcd 
+    create_latest_symlink "$SCRIPT_DIR/pix_data"
 }
 main
