@@ -48,7 +48,10 @@ function create_latest_symlink() {
         latest_dir=$(ls -dt */ 2>/dev/null | head -n1)
         if [[ -n "$latest_dir" ]]; then
             ln -sfn "$latest_dir" latest
-            log_info "$latest_dir/latest"
+
+            cp -L -r "$SCRIPT_DIR/pix_data/latest"  "$SCRIPT_DIR/examples"
+
+            log_info "$SCRIPT_DIR/pix_data/latest"
         else
             log_error "No directories found in $1"
             return 1
@@ -66,5 +69,6 @@ function main(){
     
     rename_pcd 
     create_latest_symlink "$SCRIPT_DIR/pix_data"
+
 }
 main

@@ -1,5 +1,5 @@
 
-pcd_path: shared_folder/pix_data/latest/pcd/00.pcd
-png_path: shared_folder/pix_data/latest/png/00.png
-camera_intrinsic: shared_folder/cali_param_file/center_camera-intrinsic.json
-lidar2camera_extrinsic: shared_folder/cali_param_file/top_center_lidar-to-center_camera-extrinsic.json
+pcd_path: shared_folder/examples/latest/pcd/00.pcd
+png_path: shared_folder/examples/latest/png/00.png
+camera_intrinsic: shared_folder/examples/center_camera-intrinsic.json
+lidar2camera_extrinsic: shared_folder/examples/top_center_lidar-to-center_camera-extrinsic.json
