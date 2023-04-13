@@ -33,10 +33,21 @@ function check_input_params(){
     fi
     
 }
-
+function check_file_existence() {
+    if ls $SCRIPT_DIR"/calibration_"*  $SCRIPT_DIR"/calibimg_"* 1>/dev/null 2>&1; then
+        log_info "[calibration_*  calibimg_*] file move [config/]"
+        
+        mv $SCRIPT_DIR"/calibration_"* "$SCRIPT_DIR/config/calibration.txt"
+        mv $SCRIPT_DIR"/calibimg_"* "$SCRIPT_DIR/config/calibimg.jpg"
+    else
+        log_warning "There is no file [calibration_*  calibimg_*]prefixed with cali."
+    fi
+}
 
 function main(){
     check_input_params
     $lidar2camera_exe $png_path $pcd_path $camera_intrinsic $lidar2camera_extrinsic
+    check_file_existence
+    python3 "$SCRIPT_DIR/config/parser.py"
 }
 main
