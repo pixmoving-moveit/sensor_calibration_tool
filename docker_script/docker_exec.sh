@@ -101,7 +101,7 @@ function main(){
 
     if docker ps -a | grep -q "${docker_container_name}"; then
         log_warning "docker container exists [$docker_container_name]"
-        is_rm_container
+        # is_rm_container
         install_container
     else
         install_container

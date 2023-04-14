@@ -6,6 +6,21 @@ build_path=$(pwd)
 cd $build_path
 
 
+function has_output() {
+    if [ -n "$1" ]; then
+        if $1 > /dev/null 2>&1; then
+            build_path="$build_path/$1"
+            cd $build_path
+
+        else
+            cd $build_path
+        fi
+    else
+        echo "No command specified"
+        return 1
+    fi
+}
+
 
 function is_folder_exist(){
     # 使用 [ 命令判断文件夹是否存在
@@ -48,4 +63,4 @@ function main(){
     is_folder_exist
     is_cmake_build
 }
-main
+main 
