@@ -17,3 +17,6 @@ yq
 
 __pycache__/
 **/__pycache__/
+
+
+shared_folder/examples/latest/
