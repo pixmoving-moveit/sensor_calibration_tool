@@ -1,9 +1,0 @@
-<launch>
-<!-- start ros driver -->
-  <include file="$(find rslidar_sdk)/launch/start.launch" />
-  <include file="/root/shared_folder/get_cail_data/usb_cam.launch" />
-
-<!-- get pcd png -->
-  <!-- <include file="/root/shared_folder/get_cail_data/topic2pcd.launch" /> -->
-  <!-- <include file="/root/shared_folder/get_cail_data/topic2png.launch" /> -->
-</launch>

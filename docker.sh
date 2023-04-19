@@ -31,14 +31,20 @@ function error() {
 
 function is_yq_install(){
   
+  if [ -e "$SCRIPT_DIR/docker_copy/yq" ]; then
+    log_info "yq File exists"
+  else
+    YQ_VERSION="v4.16.2"
+    YQ_BINARY="yq_linux_amd64"
+    wget -L https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY} -O $SCRIPT_DIR/docker_copy/yq
+  fi
+
+
   if ! which yq > /dev/null; then
     read -p "yq command not found. Do you want to install it? (Y/n) " choice
     case "$choice" in
       y|Y )
         # 自动安装 yq 命令
-        YQ_VERSION="v4.16.2"
-        YQ_BINARY="yq_linux_amd64"
-        wget -L https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY} -O $SCRIPT_DIR/docker_copy/yq
         chmod +x $SCRIPT_DIR/docker_copy/yq
 
         sudo cp $SCRIPT_DIR/docker_copy/yq /usr/bin/yq

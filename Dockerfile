@@ -30,8 +30,9 @@ RUN tar -xzf /root/docker_copy.tar.gz -C /root/ \
     # intall rs16  ros workspace && mkdir -p /root/sensor_driver_ws/src 
     && cd /root/sensor_driver_ws/src \
     && git clone -b ros1 https://github.com/pixmoving-moveit/rslidar_sdk.git \
-    && git clone https://github.com/gaowenliang/code_utils.git \
+    && git clone -b bugfix/code_utils https://github.com/pixmoving-moveit/code_utils.git \
     && git clone https://github.com/gaowenliang/imu_utils.git \
+    && git clone -b feature/melodic-devel/chc https://github.com/pixmoving-moveit/nmea_navsat_driver.git \
     && cd /root/sensor_driver_ws/src/rslidar_sdk && git submodule init && git submodule update \
     # catkin_make ROS package
     && cd /root/sensor_driver_ws/ \
