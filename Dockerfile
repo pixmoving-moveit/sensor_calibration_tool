@@ -26,6 +26,7 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.ustc.edu.cn/@g /etc/apt/sources.list 
     ros-melodic-pcl-ros \
     ros-melodic-image-view \
     ros-melodic-ublox-msgs \
+    ros-melodic-roslint \
     # ROS imu
     libceres-dev \
     libdw-dev \
