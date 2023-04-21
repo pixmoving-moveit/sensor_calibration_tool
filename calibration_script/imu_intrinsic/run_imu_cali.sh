@@ -20,5 +20,6 @@ function run_cali(){
 
 function main(){
     run_cali
+    log_info "Calibration successful, output [$SCRIPT_DIR/config/param.yaml]"
 }
 main
