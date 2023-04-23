@@ -1,0 +1,17 @@
+repositories:
+# ros2 
+  calibration_ws/src/image_pipeline:
+    type: git
+    url: https://github.com/ros-perception/image_pipeline.git
+    version: humble
+  calibration_ws/src/calibration_tools:
+    type: git
+    url: https://github.com/pixmoving-moveit/calibration_tools.git
+    version: feature/ros2-calibration-tools
+  
+
+# run exe
+  SensorsCalibration:
+    type: git
+    url: https://github.com/pixmoving-moveit/SensorsCalibration.git
+    version: 22.04

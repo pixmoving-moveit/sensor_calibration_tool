@@ -7,6 +7,9 @@ install/
 log/
 **/log/
 
+
+sensors_calibration_tool/
+
 pix_data/
 
 **/*.tar.gz
