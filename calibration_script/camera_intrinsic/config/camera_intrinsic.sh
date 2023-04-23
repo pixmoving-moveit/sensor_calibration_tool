@@ -15,12 +15,9 @@ function move_cali_file() {
     fi
 }
 
-function source_ws(){
-    ws_path=
-}
 
 function main(){
-    source $SCRIPT_DIR/../../install/setup.bash
+    source $SCRIPT_DIR/../../../sensors_calibration_tool/calibration_ws/install/setup.bash
     ros2 run camera_calibration cameracalibrator --size 11x8 --square 0.5 --ros-args -r image:=/image_raw -p camera:=/camera
 
     stop 2
