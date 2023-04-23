@@ -1,7 +1,12 @@
+file_path: /home/pixkit/docker/sensor_calibration_tool/shared_folder
 get_cail_data:
   png_topic_name: /usb_cam/image_raw
-  pcd_topic_name: /rs/points 
+  pcd_topic_name: /rs/points
 docker_config:
   docker_container_name: sensor_calibration_1
   docker_image_name: sensor_calibration_tool
   docker_image_version: latest
+build_params:
+  lidar2camera_path: ../sensors_calibration_tool/SensorsCalibration/lidar2camera/manual_calib/
+  lidar2imu_path: ../sensors_calibration_tool/SensorsCalibration/lidar2imu/manual_calib/
+  calibration_ws_path: ../sensors_calibration_tool/calibration_ws/

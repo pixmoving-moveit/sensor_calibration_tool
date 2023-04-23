@@ -2,10 +2,6 @@
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 source $SCRIPT_DIR/log.sh
 
-build_path=$(pwd)
-cd $build_path
-
-
 function has_output() {
     if [ -n "$1" ]; then
         if $1 > /dev/null 2>&1; then
@@ -53,6 +49,9 @@ function is_cmake_build(){
 
 
 function main(){
+    cd $1
+    build_path=$(pwd)
+
     if [ -e "$build_path/CMakeLists.txt" ]; then
         log_info "\033[34m[$build_path]\033[32m"
     else
@@ -63,4 +62,4 @@ function main(){
     is_folder_exist
     is_cmake_build
 }
-main 
+main $1

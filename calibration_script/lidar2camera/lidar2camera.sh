@@ -13,7 +13,7 @@ camera_intrinsic="$SCRIPT_DIR/config/center_camera-intrinsic.json"
 lidar2camera_extrinsic="$SCRIPT_DIR/config/hook.json"
 
 
-lidar2camera_exe=$SCRIPT_DIR/../../SensorsCalibration/lidar2camera/manual_calib/bin/run_lidar2camera 
+lidar2camera_exe=$SCRIPT_DIR/../../sensors_calibration_tool/SensorsCalibration/lidar2camera/manual_calib/bin/run_lidar2camera 
 
 function check_input_params(){
     if is_absolute_path $pcd_path;then
