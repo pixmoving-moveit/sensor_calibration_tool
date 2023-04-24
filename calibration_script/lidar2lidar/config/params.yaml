@@ -8,19 +8,19 @@
     total_count: 5
 
     # save calib results to 
-    save_path: "./"
+    save_path: "/home/pixkit/docker/sensor_calibration_tool/calibration_script/lidar2lidar"
 
     # save calib results file
     file_res: "calib_res.csv"
 
     # save calib pcd file
-    file_pcd: "result_with_sub_lidar.pcd"
+    file_pcd: "/home/pixkit/docker/sensor_calibration_tool/calibration_script/lidar2lidar/pointcloud_map.pcd"
 
     # Topic for main lidar
-    main_lidar_topic: "/rs16/points_raw"
+    main_lidar_topic: "/rs16/points"
 
     # Topic for sub lidar
-    sub_lidar_topic:  "/rsbp/points_raw"
+    sub_lidar_topic:  "/rsbp/points"
 
     # Topic for velocity status
     velocity_status_topic: "/vehicle/status/velocity_status"

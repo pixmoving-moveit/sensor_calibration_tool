@@ -40,21 +40,22 @@ class GetLidar2CameraT:
 
         # 将匹配到的数字转成浮点数，并保存到列表中
         numbers = [float(match) for match in matches]
-
+        
         R = np.array([numbers[i:i+3] for i in range(0, 9, 3)])
         t = np.array(numbers[9:12])
 
         T = np.hstack((R, t.reshape(3, 1)))
         T = np.vstack((T, [0, 0, 0, 1]))         # 父camera-子lidar
-
+        
         T_inv = np.linalg.inv(T)            # 父lidar-子camera
+
         rotation_matrix = T_inv[:3, :3]
         self.translation = T_inv[:3, 3].tolist()
 
-
         r = Rotation.from_matrix(rotation_matrix)
-        self.euler_angles = r.as_euler('xyz', degrees=True).tolist()
-
+        self.euler_angles = r.as_euler('xyz', degrees=False).tolist()
+        print(self.euler_angles)
+        print(self.translation)
 
 
     def write_json_file(self):
@@ -70,14 +71,6 @@ class GetLidar2CameraT:
                 'yaw': self.euler_angles[2]
             }
         }
-
-        # sensors_calibration["rs162camera"]["x"] = self.euler_angles[0]
-        # sensors_calibration["rs162camera"]["y"] = self.euler_angles[1]
-        # sensors_calibration["rs162camera"]["z"] = self.euler_angles[2]
-
-        # sensors_calibration["rs162camera"]["roll"]  = self.translation[0] 
-        # sensors_calibration["rs162camera"]["pitch"] = self.translation[1] 
-        # sensors_calibration["rs162camera"]["yaw"]   = self.translation[2] 
 
         with open(path, "w") as f:
             yaml.dump(sensors_calibration, f)

@@ -15,13 +15,14 @@ def generate_launch_description():
     xacro_path = os.path.join(share_dir, 'config', 'robot.urdf.xacro')
     rviz_config_file = os.path.join(share_dir, 'config', 'rviz2.rviz')
 
+    config_path = os.path.join(current_path, 'params.yaml')
+
     params_declare = DeclareLaunchArgument(
         'params_file',
-        default_value=os.path.join(
-            current_path, 'config', 'params.yaml'),
+        default_value=config_path,
         description='Path to the ROS2 parameters file to use.')
 
-    print("config_file_path : {}".format(os.path.join(share_dir, 'config', 'params.yaml')))
+    print("config_file_path : {}".format(config_path))
 
     return LaunchDescription([
         params_declare,
@@ -31,12 +32,13 @@ def generate_launch_description():
             name='multi_lidar_calib_node',
             parameters=[parameter_file],
             output='screen'
-        ),
-        Node(
-            package='rviz2',
-            executable='rviz2',
-            name='rviz2',
-            arguments=['-d', rviz_config_file],
-            output='screen'
         )
+        # ,
+        # Node(
+        #     package='rviz2',
+        #     executable='rviz2',
+        #     name='rviz2',
+        #     arguments=['-d', rviz_config_file],
+        #     output='screen'
+        # )
     ])
