@@ -24,3 +24,5 @@ __pycache__/
 
 shared_folder/examples/latest/
 **.bag
+
+ros2bag/
