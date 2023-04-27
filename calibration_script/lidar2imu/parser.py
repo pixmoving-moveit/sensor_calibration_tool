@@ -29,7 +29,7 @@ class GetLidar2CameraT:
 
 
     def read_calibration_file(self):
-        path = os.path.join(self.script_path, "output", "calibration.txt")
+        path = os.path.join(self.script_path, "output", "lidar2lidar_extrinsic.txt")
         with open(path, 'r') as f:
             self.content = f.read()
 
@@ -62,7 +62,7 @@ class GetLidar2CameraT:
         path = os.path.join(self.script_path, "output", "sensors_calibration.yaml")
         
         sensors_calibration={
-            'rs162camera': {
+            'rs162imu': {
                 'x': self.translation[0],
                 'y': self.translation[1],
                 'z': self.translation[2],
