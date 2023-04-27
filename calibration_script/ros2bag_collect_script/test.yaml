@@ -1,0 +1,5 @@
+---
+bag_prefix_name: gnss_lidar
+topic_names: 
+  - /chc/imu
+  - /chc/pitch

@@ -1,6 +1,4 @@
 
-
-
 # Citation
 ## [SensorsCalibration](https://github.com/PJLab-ADG/SensorsCalibration)
 ```

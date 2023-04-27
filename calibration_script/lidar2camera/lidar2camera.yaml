@@ -1,5 +1,4 @@
-pcd_path: shared_folder/examples/example/pcd/00.pcd
-png_path: shared_folder/examples/example/png/00.png
-
-# pcd_path: shared_folder/examples/latest/pcd/00.pcd
-# png_path: shared_folder/examples/latest/png/00.png
+pcd_filename: input/latest.pcd
+png_filename: input/latest.png
+camera_intrinsic_filename: input/output_camera-intrinsic.json
+lidar2camera_extrinsic_filename: input/top_center_lidar-to-center_camera-extrinsic.json

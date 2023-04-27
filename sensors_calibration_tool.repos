@@ -1,13 +1,42 @@
 repositories:
 # ros2 
+  # camera intrinsic calibration
   calibration_ws/src/image_pipeline:
     type: git
     url: https://github.com/ros-perception/image_pipeline.git
     version: humble
+  # lidar2lidar
   calibration_ws/src/calibration_tools:
     type: git
     url: https://github.com/pixmoving-moveit/calibration_tools.git
     version: feature/ros2-calibration-tools
+  # imu intrinsic calibration
+  calibration_ws/src/imu_utils:
+    type: git
+    url: https://github.com/pixmoving-moveit/imu_utils.git
+    version: feature/ros2
+  # ros2bag data collection
+  calibration_ws/src/data_collection:
+    type: git
+    url: https://github.com/pixmoving-moveit/data_collection.git
+    version: main
+  # sensor_component
+  calibration_ws/src/sensor_component/rslidar_sdk:
+    type: git
+    url: https://github.com/pixmoving-moveit/rslidar_sdk.git
+    version: feature/load-config-from-ros2-param
+  calibration_ws/src/sensor_component/rslidar_msg:
+    type: git
+    url: https://github.com/RoboSense-LiDAR/rslidar_msg.git
+    version: main 
+  calibration_ws/src/sensor_component/nmea_navsat_driver:
+    type: git
+    url: https://github.com/pixmoving-moveit/nmea_navsat_driver.git
+    version: ros2
+  calibration_ws/src/sensor_component/pixkit_sensor_kit_launch:
+    type: git
+    url: https://github.com/pixmoving-moveit/pixkit_sensor_kit_launch.git
+    version: main
   
 
 # run exe

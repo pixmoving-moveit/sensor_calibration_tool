@@ -1,0 +1,6 @@
+ros2bag_path: /home/pixkit/docker/sensor_calibration_tool/ros2bag/gnss_lidar_2023_04_27-16_41_58
+
+pcd_dir_path: /home/pixkit/docker/sensor_calibration_tool/ros2bag/gnss_lidar/lidar_top
+pose_file_path: /home/pixkit/docker/sensor_calibration_tool/ros2bag/gnss_lidar/lidar_gnss_pose.txt
+pointcloud_topic: /sensing/lidar/top/rslidar_sdk/rs/points
+pose_topic: /sensing/gnss/pose

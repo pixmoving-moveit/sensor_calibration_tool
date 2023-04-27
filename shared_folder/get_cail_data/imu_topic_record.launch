@@ -1,9 +1,0 @@
-<launch>
-<!-- start ros driver -->
-  <include file="/root/shared_folder/get_cail_data/nmea_tcpclient_driver.launch" />
-
-  <arg name="bag_filename" default="$(env imu_record_path_env)"/>
-  <arg name="topics" default="$(env imu_topic_name_env)"/>
-
-  <node pkg="rosbag" type="record" name="rosbag_record_node" output="screen" args="-O $(arg bag_filename) $(arg topics)"/>
-</launch>

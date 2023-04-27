@@ -1,27 +1,70 @@
 #!/bin/bash
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
-source $SCRIPT_DIR/docker_script/log.sh
-
-config_file_path="$SCRIPT_DIR/shared_folder"
-NAME=$config_file_path yq eval -i  '.file_path = strenv(NAME)' "$config_file_path/config.yaml"
+source $SCRIPT_DIR/common_script/log.sh
 
 lidar2camera_path=""
 lidar2imu_path=""
 calibration_ws_path=""
 
+function lower() {
+  echo $1 | tr '[A-Z]' '[a-z]'
+}
+
+function upper() {
+  echo $1 | tr '[a-z]' '[A-Z]'
+}
+
+function print_help() {
+  echo "Sensor calibration tool execution script"
+  echo ""
+  echo "Usage:"
+  echo "  ./calibration.sh <function>"
+  echo ""
+  echo "  <function>: function name"
+  echo "  <function>: [lidar2camera|lidar2imu|calibration_ws]"
+  echo "    - lidar2camera : Compile the executable file of lidar2camera"
+  echo "    - lidar2imu : Compile the executable file of lidar2imur"
+  echo "    - calibration_ws : Compile ROS2 functional space"
+  echo ""
+}
+
+function error() {
+  echo "$1" >&2
+}
+
+function is_yq_install(){
+  
+  if [ -e "$SCRIPT_DIR/yq" ]; then
+    log_info "yq File exists"
+  else
+    YQ_VERSION="v4.16.2"
+    YQ_BINARY="yq_linux_amd64"
+    wget -L https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY} -O $SCRIPT_DIR/yq
+  fi
+
+  if ! which yq > /dev/null; then
+    read -p "yq command not found. Do you want to install it? (Y/n) " choice
+    case "$choice" in
+      y|Y )
+        # 自动安装 yq 命令
+        chmod +x $SCRIPT_DIR/yq
+
+        sudo cp $SCRIPT_DIR/yq /usr/bin/yq
+        ;;
+      * )
+        log_warning "Please install yq command manually."
+        exit 1
+        ;;
+    esac
+  fi
+
+}
+
 function read_yaml(){
-    config_path="$config_file_path/config.yaml"
-
-    root_path=$(yq e  '.file_path' $config_path )
-
+    config_path="$SCRIPT_DIR/config.yaml"
     lidar2camera_path=$(yq e  '.build_params.lidar2camera_path' $config_path )
-    lidar2camera_path="$root_path/$lidar2camera_path"
-
     lidar2imu_path=$(yq e  '.build_params.lidar2imu_path' $config_path )
-    lidar2imu_path="$root_path/$lidar2imu_path"
-
     calibration_ws_path=$(yq e  '.build_params.calibration_ws_path' $config_path )
-    calibration_ws_path="$root_path/$calibration_ws_path"
 
 }
 
@@ -74,8 +117,12 @@ function parse_arguments() {
 }
 
 function main(){
-    read_yaml 
-    parse_arguments $@
-
+  if [[ "help" == `lower $1` ]]; then
+    print_help
+    exit 0
+  fi
+  is_yq_install
+  read_yaml 
+  parse_arguments $@
 }
 main $@

@@ -1,0 +1,4 @@
+build_params:
+  lidar2camera_path: sensors_calibration_tool/SensorsCalibration/lidar2camera/manual_calib/
+  lidar2imu_path: sensors_calibration_tool/SensorsCalibration/lidar2imu/manual_calib/
+  calibration_ws_path: sensors_calibration_tool/calibration_ws/

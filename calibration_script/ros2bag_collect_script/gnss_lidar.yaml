@@ -1,0 +1,5 @@
+---
+bag_prefix_name: gnss_lidar
+topic_names: 
+  - /sensing/gnss/pose
+  - /sensing/lidar/top/rslidar_sdk/rs/points

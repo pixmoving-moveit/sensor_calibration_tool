@@ -1,0 +1,3 @@
+idar_pcds_dir: /home/pixkit/rosabg/ros2bag/gnss_lidar_fir/
+lidar_pose_file: /home/pixkit/rosabg/ros2bag/gnss_lidar_fir/top_center_lidar-pose.txt
+extrinsic_json: input/gnss-to-top_center_lidar-extrinsic.json

@@ -1,6 +1,6 @@
 #!/bin/bash
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
-source $SCRIPT_DIR/log.sh
+source $SCRIPT_DIR/../common_script/log.sh
 
 function has_output() {
     if [ -n "$1" ]; then
