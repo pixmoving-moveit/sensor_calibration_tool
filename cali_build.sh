@@ -81,17 +81,17 @@ function parse_arguments() {
   case "$FUNCTION" in
     lidar2imu)
     log_info "lidar2imu build"
-    $SCRIPT_DIR/build_script/cmake_build.sh $lidar2imu_path
+    $SCRIPT_DIR/build_script/cmake_build.sh $SCRIPT_DIR/$lidar2imu_path
     ;;
 
     lidar2camera)
     log_info "lidar2camera exec"
-    $SCRIPT_DIR/build_script/cmake_build.sh $lidar2camera_path
+    $SCRIPT_DIR/build_script/cmake_build.sh $SCRIPT_DIR/$lidar2camera_path
     ;;
 
     calibration_ws)
     log_info "calibration_ws build"
-    $SCRIPT_DIR/build_script/colcon_build.sh $calibration_ws_path
+    $SCRIPT_DIR/build_script/colcon_build.sh $SCRIPT_DIR/$calibration_ws_path
     ;;
   esac
 
