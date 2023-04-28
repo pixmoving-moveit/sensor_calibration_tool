@@ -18,6 +18,7 @@ lidar:
       max_distance: 200            #Maximum distance of point cloud
       use_lidar_clock: false       #True--Use the lidar clock as the message timestamp
                                    #False-- Use the system clock as the timestamp
+      dense_points: true
       pcap_path: /home/robosense/lidar.pcap #The path of pcap file
     ros:
       ros_frame_id: rs16                           #Frame id of packet message and point cloud message
@@ -37,6 +38,7 @@ lidar:
       max_distance: 200            #Maximum distance of point cloud
       use_lidar_clock: false       #True--Use the lidar clock as the message timestamp
                                   #False-- Use the system clock as the timestamp
+      dense_points: true
       pcap_path: /home/robosense/lidar.pcap #The path of pcap file
     ros:
       ros_frame_id: rsbp                           #Frame id of packet message and point cloud message

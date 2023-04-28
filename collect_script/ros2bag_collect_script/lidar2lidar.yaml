@@ -1,0 +1,5 @@
+---
+bag_prefix_name: lidar2lidar
+topic_names: 
+  - /rs16/points  
+  - /rsbp/points

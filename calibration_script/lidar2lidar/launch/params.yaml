@@ -8,13 +8,13 @@
     total_count: 5
 
     # save calib results to 
-    save_path: "/home/pixkit/docker/sensor_calibration_tool/calibration_script/lidar2lidar"
+    save_path: "/home/pixkit/"
 
     # save calib results file
     file_res: "calib_res.csv"
 
     # save calib pcd file
-    file_pcd: "/home/pixkit/docker/sensor_calibration_tool/calibration_script/lidar2lidar/pointcloud_map.pcd"
+    file_pcd: "pointcloud_map.pcd"
 
     # Topic for main lidar
     main_lidar_topic: "/rs16/points"
@@ -26,14 +26,14 @@
     velocity_status_topic: "/vehicle/status/velocity_status"
 
     # Initial transformation vector (x, y, z, roll, pitch, yaw), where euler angles are in rad 
-    trans_vector: [2.5, 0.0, -1.2, 0.0, 0.0, 0.0]
+    trans_vector: [0.0, 0.0, -0.4, 0.0, 1.57, 0.0]
     # # Initial transformation in translation and rotation
-    translation:  [2.5, 0.0, -1.2]
+    translation:  [0.0, 0.0, -0.4]
     rotation: 
       [ 
-        1.0,  0.0,  0.0,
-        0.0, 1.0,  0.0,
-        0.0,  0.0, 1.0
+        0.0007963,  0.0000000,  0.9999997,
+   0.0000000,  1.0000000,  0.0000000,
+  -0.9999997,  0.0000000,  0.0007963 
       ]
     # # Initial transformation matirx from sub lidar to main lidar
     # trans_matirx: [ 
