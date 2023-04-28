@@ -1,4 +1,4 @@
 ---
 bag_prefix_name: imu
 topic_names: 
-  - /chc/imu
+  - /gnss/chc/imu

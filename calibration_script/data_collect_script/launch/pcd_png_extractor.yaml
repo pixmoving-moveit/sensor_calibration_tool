@@ -1,5 +1,0 @@
-pointcloud_topic : /rslidar_sdk/rs/points
-image_topic : /image_raw
-collect_number : 1
-pcd_folder_path : /home/pixkit/docker/sensor_calibration_tool/ros2bag/pcd_png_data
-png_folder_path : /home/pixkit/docker/sensor_calibration_tool/ros2bag/pcd_png_data

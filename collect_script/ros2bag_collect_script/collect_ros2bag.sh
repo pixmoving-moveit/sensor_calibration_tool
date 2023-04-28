@@ -1,6 +1,5 @@
 #!/bin/bash
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
-source $SCRIPT_DIR/../common.sh
 source $SCRIPT_DIR/../../common_script/log.sh
 
 # shell function to check if a ROS2 topic has output
@@ -51,11 +50,12 @@ function read_topic_names(){
 
 function collect_ros2bag(){
     bag_prefix_name=$(yq e '.bag_prefix_name' $config_name)
-    bag_prefix_name="$SCRIPT_DIR/../../ros2bag/"$bag_prefix_name"_"$(date +"%Y-%m-%d-%H_%M_%S")
+    ros2bag_path="$SCRIPT_DIR/../../ros2bag/"$bag_prefix_name"_"$(date +"%Y-%m-%d-%H_%M_%S")
 
-    log_info "Start collect:[$bag_prefix_name]"
+    log_info "Start collect:[$ros2bag_path]"
     # # output: gnss_lidar_2023-04-25-11_07_02
-    ros2 bag record -o $bag_prefix_name $topic_names
+    ros2 bag record -o $ros2bag_path $topic_names
+    ln -sf $ros2bag_path "$SCRIPT_DIR/../../ros2bag/$bag_prefix_name""_latest_ros2bag"
 }
 
 function main(){

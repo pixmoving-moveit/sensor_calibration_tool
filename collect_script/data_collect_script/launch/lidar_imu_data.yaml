@@ -1,0 +1,2 @@
+pointcloud_topic: /sensing/lidar/top/rslidar_sdk/rs/points
+pose_topic: /sensing/gnss/pose

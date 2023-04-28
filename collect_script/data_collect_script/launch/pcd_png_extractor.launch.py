@@ -22,8 +22,8 @@ def generate_launch_description():
     pointcloud_topic = config_map["pointcloud_topic"]
     image_topic = config_map["image_topic"]
     collect_number = config_map["collect_number"]
-    pcd_folder_path = config_map["pcd_folder_path"] 
-    png_folder_path = config_map["png_folder_path"] 
+    pcd_folder_path = os.path.join(current_file_path, "../../..", "ros2bag/pcd_png_data")
+    png_folder_path = os.path.join(current_file_path, "../../..", "ros2bag/pcd_png_data")
 
     if not os.path.exists(png_folder_path):
         os.makedirs(png_folder_path, exist_ok=True)

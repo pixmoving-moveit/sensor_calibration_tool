@@ -1,0 +1,3 @@
+pointcloud_topic : /rslidar_sdk/rs/points
+image_topic : /image_raw
+collect_number : 1
