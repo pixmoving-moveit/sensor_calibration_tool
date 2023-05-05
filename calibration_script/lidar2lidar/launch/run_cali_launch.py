@@ -85,8 +85,8 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        # sdk_node,
-        # source_pointcloud_filters,
+        sdk_node,
+        source_pointcloud_filters,
         lidar2lidar_node,
-        # lidar2lidar_exit_handler
+        lidar2lidar_exit_handler
     ])
