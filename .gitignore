@@ -26,3 +26,4 @@ shared_folder/examples/latest/
 **.bag
 
 ros2bag/
+.vscode/

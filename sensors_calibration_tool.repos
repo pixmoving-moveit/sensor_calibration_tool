@@ -6,10 +6,10 @@ repositories:
     url: https://github.com/ros-perception/image_pipeline.git
     version: humble
   # lidar2lidar
-  calibration_ws/src/calibration_tools:
+  calibration_ws/src/multi_lidar_calibration_ros2:
     type: git
-    url: https://github.com/pixmoving-moveit/calibration_tools.git
-    version: feature/ros2-calibration-tools
+    url: https://github.com/pixmoving-moveit/multi_lidar_calibration_ros2.git
+    version: main
   # imu intrinsic calibration
   calibration_ws/src/imu_utils:
     type: git
