@@ -123,7 +123,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Best Effort
-        Value: /pass_through/rs16/points
+        Value: /rs16/points
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -142,9 +142,9 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 248
+      Max Intensity: 251
       Min Color: 0; 0; 0
-      Min Intensity: 1
+      Min Intensity: 2
       Name: PointCloud2
       Position Transformer: XYZ
       Selectable: true
@@ -214,18 +214,18 @@ Visualization Manager:
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 2.8967208862304688
+        Y: 0.5671193599700928
+        Z: 8.344650268554688e-06
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4347972869873047
+      Pitch: 1.5697962045669556
       Target Frame: <Fixed Frame>
       Value: XYOrbit (rviz_default_plugins)
-      Yaw: 2.697381019592285
+      Yaw: 2.602379560470581
     Saved: ~
 Window Geometry:
   CaptureStatePanel:

@@ -1,9 +1,9 @@
-initial_pose: [0.2, 0.1, -0.6, 0.0, 1.57, 0.0]
+initial_pose: [0.0, 0.0, -0.4, 0.0, 1.57, 0.0]
 leaf_size: 0.2
 max_iteration: 10
 transform_epsilon: 0.001
 step_size: 0.05
-resolution: 0.05
+resolution: 0.5
 source_pointcloud: &source_pointcloud /rs16/points
 target_pointcloud: &target_pointcloud /rsbp/points
 
@@ -17,12 +17,12 @@ source_pointcloud_filter:
   min_z: -1.0
   max_z: 2.0
 
-# target_pointcloud_filter:
-#   input_topic_name: /rsbp/points
-#   output_topic_name: *target_pointcloud
-#   min_x: 
-#   max_x:
-#   min_y:
-#   max_y:
-#   min_z:
-#   max_z:
+target_pointcloud_filter:
+  input_topic_name: /rsbp/points
+  output_topic_name: *target_pointcloud
+  min_x: -1.5
+  max_x: 1.5
+  min_y: -2.0
+  max_y: 2.0
+  min_z: 1.0
+  max_z: 10.0

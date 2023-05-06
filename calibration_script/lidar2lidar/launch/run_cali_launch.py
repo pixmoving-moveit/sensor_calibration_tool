@@ -46,6 +46,25 @@ def generate_launch_description():
             "max_z": config_map["source_pointcloud_filter"]["max_z"],
         }]
     )
+
+    target_pointcloud_filters = Node(
+        package='multi_lidar_calibration',
+        executable='point_cloud_filter_node',
+        name='target_point_cloud_filter_node',
+        output='screen',
+        parameters=[{
+            'input_topic_name': config_map["target_pointcloud_filter"]["input_topic_name"],
+            'output_topic_name': config_map["target_pointcloud_filter"]["output_topic_name"],
+            "min_x": config_map["target_pointcloud_filter"]["min_x"],
+            "max_x": config_map["target_pointcloud_filter"]["max_x"],
+
+            "min_y": config_map["target_pointcloud_filter"]["min_y"],
+            "max_y": config_map["target_pointcloud_filter"]["max_y"],
+
+            "min_z": config_map["target_pointcloud_filter"]["min_z"],
+            "max_z": config_map["target_pointcloud_filter"]["max_z"],
+        }]
+    )
     
 
     lidar2lidar_node = Node(
@@ -54,7 +73,7 @@ def generate_launch_description():
         name='multi_lidar_calibration_ndt_node',
         output='screen',
         parameters=[{
-            'initial_pose':config_map[ "initial_pose"],
+            'initial_pose':config_map["initial_pose"],
             'leaf_size': config_map["leaf_size"],
             'max_iteration': config_map["max_iteration"],
             'transform_epsilon': config_map["transform_epsilon"],
@@ -86,7 +105,9 @@ def generate_launch_description():
 
     return LaunchDescription([
         sdk_node,
-        source_pointcloud_filters,
+        # source_pointcloud_filters,
+        # target_pointcloud_filters,
         lidar2lidar_node,
         lidar2lidar_exit_handler
+        
     ])
