@@ -29,24 +29,36 @@ class ParserYaml:
         with open(path, "r") as f:
             self.ost_yaml = yaml.load(f, Loader=yaml.FullLoader)
 
-        path = os.path.join(self.script_path, "output", "output_camera-intrinsic.json")
-        with open(path, 'r') as f:
-            self.center_camera_intrinsic = json.load(f)    
-
     def revise_camera_intrinsic(self):
+        self.center_camera_intrinsic = {}
+
+        self.center_camera_intrinsic["center_camera-intrinsic"] = {}
+        self.center_camera_intrinsic["center_camera-intrinsic"]["sensor_name"] = "center_camera"
+        self.center_camera_intrinsic["center_camera-intrinsic"]["target_sensor_name"] = "center_camera"
+        self.center_camera_intrinsic["center_camera-intrinsic"]["device_type"] = "camera"
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param_type"] = "intrinsic"
         
-
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"] = {}
         self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["img_dist_w"] = \
-        self.ost_yaml["image_width"]
-
+            self.ost_yaml["image_width"]
         self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["img_dist_h"] = \
-        self.ost_yaml["image_height"]
-
+            self.ost_yaml["image_height"]
+        
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_K"] = {}
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_K"]["rows"] = 3
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_K"]["cols"] = 3
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_K"]["type"] = 6
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_K"]["continuous"] = True
         self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_K"]["data"] = \
-        [self.ost_yaml["camera_matrix"]["data"][i:i+3] for i in range(0, 9, 3)]
+            [self.ost_yaml["camera_matrix"]["data"][i:i+3] for i in range(0, 9, 3)]
 
-        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_dist"]["data"][0] = \
-        self.ost_yaml["distortion_coefficients"]["data"][0:4]
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_dist"] = {}
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_dist"]["rows"] = 1
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_dist"]["cols"] = 4
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_dist"]["type"] = 6
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_dist"]["continuous"] = True
+        self.center_camera_intrinsic["center_camera-intrinsic"]["param"]["cam_dist"]["data"] = \
+            [self.ost_yaml["distortion_coefficients"]["data"][0:4]]
 
 
     
