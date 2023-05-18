@@ -27,7 +27,7 @@ def generate_launch_description():
     )
     
     # Play a ROS2 bag file
-    bag_dir = config_map["ros2bag_path"]
+    bag_dir = os.path.join(current_file_path, "..", "..", "..", "rosbag/ros2bag/imu_latest_ros2bag")
     if not os.path.exists(bag_dir):
         print(f'\x1b[31m[ERROR] Launch file {bag_dir} not found\x1b[0m')
         sys.exit(1)

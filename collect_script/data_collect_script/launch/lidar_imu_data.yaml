@@ -1,2 +1,2 @@
-pointcloud_topic: /sensing/lidar/top/rslidar_sdk/rs/points
-pose_topic: /sensing/gnss/pose
+pointcloud_topic: /lidar/top/rslidar_sdk/rs/points
+pose_topic: /gnss/pose

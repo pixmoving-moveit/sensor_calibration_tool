@@ -15,7 +15,7 @@ def generate_launch_description():
             executable='imu_an', 
             output='screen',
             parameters=[
-                {'imu_topic': '/chc/imu'},
+                {'imu_topic': '/gnss/chc/imu'},
                 {'imu_name': 'cgi410'},
                 {'data_save_path': LaunchConfiguration("data_save_path")},
                 {'max_time_min': 120},
