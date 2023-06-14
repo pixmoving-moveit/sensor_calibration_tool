@@ -23,11 +23,7 @@ function move_cali_file() {
 
 function main(){
     source $SCRIPT_DIR/../../sensors_calibration_tool/calibration_ws/install/setup.bash
-<<<<<<< HEAD
-    ros2 run camera_calibration cameracalibrator --size 11x8 --square 0.5 --ros-args -r image:=/camera/image_raw -p camera:=/camera
-=======
     ros2 run camera_calibration cameracalibrator --size 11x8 --square 0.5 --ros-args -r image:=/image_raw -p camera:=/camera
->>>>>>> f1b3bc4 (fix:修改路径)
 
     stop 2
     move_cali_file
