@@ -33,7 +33,7 @@ function check_ros2_topic {
 }
 
 function read_topic_names(){
-    topic_names=$(yq e '.topic_names | .[]' $1)
+    topic_names=$($SCRIPT_DIR/../../yq e '.topic_names | .[]' $1)
     # output:/sensing/gnss/pose /sensing/lidar/top/rslidar_sdk/rs/points
     conut=0
 
@@ -49,7 +49,7 @@ function read_topic_names(){
 }
 
 function collect_ros2bag(){
-    bag_prefix_name=$(yq e '.bag_prefix_name' $config_name)
+    bag_prefix_name=$($SCRIPT_DIR/../../yq e '.bag_prefix_name' $config_name)
     ros2bag_path="$SCRIPT_DIR/../../ros2bag/"$bag_prefix_name"_"$(date +"%Y-%m-%d-%H_%M_%S")
 
     log_info "Start collect:[$ros2bag_path]"

@@ -6,10 +6,10 @@ source $SCRIPT_DIR/../../common_script/log.sh
 # ./bin/run_lidar2camera data/0.png data/0.pcd data/center_camera-intrinsic.json data/top_center_lidar-to-center_camera-extrinsic.json
 
 config_file_path=$SCRIPT_DIR/lidar2camera.yaml
-pcd_path="$SCRIPT_DIR/"$(yq e  '.pcd_filename' $config_file_path )
-png_path="$SCRIPT_DIR/"$(yq e  '.png_filename' $config_file_path )
-camera_intrinsic="$SCRIPT_DIR/"$(yq e  '.camera_intrinsic_filename' $config_file_path )
-lidar2camera_extrinsic="$SCRIPT_DIR/"$(yq e  '.lidar2camera_extrinsic_filename' $config_file_path )
+pcd_path="$SCRIPT_DIR/"$($SCRIPT_DIR/../../yq e  '.pcd_filename' $config_file_path )
+png_path="$SCRIPT_DIR/"$($SCRIPT_DIR/../../yq e  '.png_filename' $config_file_path )
+camera_intrinsic="$SCRIPT_DIR/"$($SCRIPT_DIR/../../yq e  '.camera_intrinsic_filename' $config_file_path )
+lidar2camera_extrinsic="$SCRIPT_DIR/"$($SCRIPT_DIR/../../yq e  '.lidar2camera_extrinsic_filename' $config_file_path )
 
 
 lidar2camera_exe=$SCRIPT_DIR/../../sensors_calibration_tool/SensorsCalibration/lidar2camera/manual_calib/bin/run_lidar2camera 

@@ -62,9 +62,9 @@ function is_yq_install(){
 
 function read_yaml(){
     config_path="$SCRIPT_DIR/config.yaml"
-    lidar2camera_path=$(yq e  '.build_params.lidar2camera_path' $config_path )
-    lidar2imu_path=$(yq e  '.build_params.lidar2imu_path' $config_path )
-    calibration_ws_path=$(yq e  '.build_params.calibration_ws_path' $config_path )
+    lidar2camera_path=$($SCRIPT_DIR/yq e  '.build_params.lidar2camera_path' $config_path )
+    lidar2imu_path=$($SCRIPT_DIR/yq e  '.build_params.lidar2imu_path' $config_path )
+    calibration_ws_path=$($SCRIPT_DIR/yq e  '.build_params.calibration_ws_path' $config_path )
 
 }
 
@@ -121,7 +121,7 @@ function main(){
     print_help
     exit 0
   fi
-  is_yq_install
+  # is_yq_install
   read_yaml 
   parse_arguments $@
 }

@@ -16,7 +16,6 @@ pix_data/
 *.tar.gz
 
 **/.DS_Store
-yq
 
 __pycache__/
 **/__pycache__/

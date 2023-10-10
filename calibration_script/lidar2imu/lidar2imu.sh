@@ -7,9 +7,9 @@ source $SCRIPT_DIR/../../common_script/log.sh
 
 config_file_path=$SCRIPT_DIR/lidar2imu.yaml
 
-idar_pcds_dir=$(yq e  '.idar_pcds_dir' $config_file_path )
-lidar_pose_file=$(yq e  '.lidar_pose_file' $config_file_path )
-extrinsic_json="$SCRIPT_DIR/"$(yq e  '.extrinsic_json' $config_file_path )
+idar_pcds_dir=$($SCRIPT_DIR/../../yq e  '.idar_pcds_dir' $config_file_path )
+lidar_pose_file=$($SCRIPT_DIR/../../yq e  '.lidar_pose_file' $config_file_path )
+extrinsic_json="$SCRIPT_DIR/"$($SCRIPT_DIR/../../yq e  '.extrinsic_json' $config_file_path )
 
 lidar2imu_exe=$SCRIPT_DIR/../../sensors_calibration_tool/SensorsCalibration/lidar2imu/manual_calib/bin/run_lidar2imu
 
